@@ -1,0 +1,10 @@
+.navbar{
+  background-color: black;
+}
+.brand,.list_item{
+  color:white;
+}
+.navlink{
+  margin-left: 25px;
+  text-decoration: none;
+}
