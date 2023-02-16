@@ -1,8 +1,8 @@
 import React from "react";
-import {motion} from 'framer-motion';
+import {motion,useCycle} from 'framer-motion';
 
 const loaderVariants = {
-    animateOne:{
+    animationOne:{
         x: [-20,20],
         y: [0,-30],
         transition:{
@@ -19,17 +19,33 @@ const loaderVariants = {
             },
 
         }
+    },
+    animationTwo:{
+        y: [0,-40],
+        x:0,
+        transition:{
+            y:{
+                repeat: Infinity,
+                repeatType: 'mirror',
+                duration:0.25,
+                ease: 'easeOut'
+            }
+        }
     }
 }
 const Loader = ()=>{
+    const [animation,cycleAnimation] = useCycle("animationOne","animationTwo");
+
+
     return(
         <>
         <motion.div className="loader"
             variants = {loaderVariants}
-            animate="animateOne"
+            animate={animation}
         >
 
         </motion.div>
+        <div onClick={()=>cycleAnimation()}>Cycle Loader</div>
         </>
     )
 }
