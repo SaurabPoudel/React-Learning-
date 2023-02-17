@@ -1,5 +1,6 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 
 const Read = () => {
   const [data, setData] = useState([]);
@@ -12,13 +13,30 @@ const Read = () => {
         setData(res.data);
       });
   }
+  function handleDelete(id) {
+    axios
+      .delete(`https://63edf4725e9f1583bdb91f17.mockapi.io/crud-saurab/${id}`)
+      .then((res) => {
+        getData();
+      });
+  }
+  const setToLocalStorage = (id, name, email) => {
+    localStorage.setItem("id", id);
+    localStorage.setItem("name", name);
+    localStorage.setItem("email", email);
+  };
   useEffect(() => {
     getData();
   }, []);
 
   return (
     <>
-      <h2>Read Operation</h2>
+      <div className="d-flex justify-content-between m-2">
+        <h2>Read Operation</h2>
+        <Link to="/">
+          <button className="btn btn-secondary">Create</button>
+        </Link>
+      </div>
       <table className="table">
         <thead>
           <tr>
@@ -38,10 +56,28 @@ const Read = () => {
                   <td>{eachData.name}</td>
                   <td>{eachData.email}</td>
                   <td>
-                    <button className="btn-success">Edit</button>
+                    <Link to="/update">
+                      <button
+                        className="btn-success"
+                        onClick={() =>
+                          setToLocalStorage(
+                            eachData.id,
+                            eachData.name,
+                            eachData.email
+                          )
+                        }
+                      >
+                        Edit
+                      </button>
+                    </Link>
                   </td>
                   <td>
-                    <button className="btn-danger">Delete</button>
+                    <button
+                      className="btn-danger"
+                      onClick={() => handleDelete(eachData.id)}
+                    >
+                      Delete
+                    </button>
                   </td>
                 </tr>
               </tbody>

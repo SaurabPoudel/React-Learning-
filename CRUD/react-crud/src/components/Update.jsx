@@ -1,41 +1,42 @@
 import axios from "axios";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
-const Create = () => {
+const Update = () => {
+  const [id, setId] = useState(0);
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
-  const history = useNavigate();
-  const header = { "Access-Control-Allow-Origin": "*" };
 
-  const handleSubmit = (e) => {
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    setId(localStorage.getItem("id"));
+    setName(localStorage.getItem("name"));
+    setEmail(localStorage.getItem("email"));
+  }, []);
+
+  const handleUpdate = (e) => {
     e.preventDefault();
-    console.log("Clicked");
     axios
-      .post("https://63edf4725e9f1583bdb91f17.mockapi.io/crud-saurab", {
+      .put(`https://63edf4725e9f1583bdb91f17.mockapi.io/crud-saurab/${id}`, {
         name: name,
         email: email,
-        header,
       })
       .then(() => {
-        history("/read");
+        navigate("/read");
       });
   };
+
   return (
     <>
-      <div className="d-flex justify-content-between m-2">
-        <h2>Create</h2>
-        <Link to="/read">
-          <button className="btn btn-primary">Show Data</button>
-        </Link>
-      </div>
-
+      <h2>Update</h2>
       <form>
         <div className="mb-3">
           <label className="form-label">Name</label>
           <input
             type="text"
             className="form-control"
+            value={name}
             onChange={(e) => setName(e.target.value)}
           />
         </div>
@@ -44,6 +45,7 @@ const Create = () => {
           <input
             type="email"
             className="form-control"
+            value={email}
             aria-describedby="emailHelp"
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -51,14 +53,17 @@ const Create = () => {
 
         <button
           type="submit"
-          className="btn btn-primary"
-          onClick={handleSubmit}
+          className="btn btn-primary mx-2"
+          onClick={handleUpdate}
         >
-          Submit
+          Update
         </button>
+        <Link to="/read">
+          <button className="btn btn-secondary mx-2">Back</button>
+        </Link>
       </form>
     </>
   );
 };
 
-export default Create;
+export default Update;
