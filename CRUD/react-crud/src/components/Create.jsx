@@ -19,6 +19,15 @@ const Create = () => {
       })
       .then(() => {
         history("/read");
+      })
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.status);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
       });
   };
   return (

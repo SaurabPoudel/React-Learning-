@@ -11,6 +11,15 @@ const Read = () => {
       .then((res) => {
         console.log(res.data);
         setData(res.data);
+      })
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.status);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
       });
   }
   function handleDelete(id) {
@@ -18,6 +27,15 @@ const Read = () => {
       .delete(`https://63edf4725e9f1583bdb91f17.mockapi.io/crud-saurab/${id}`)
       .then((res) => {
         getData();
+      })
+      .catch(function (error) {
+        if (error.response) {
+          console.log(error.response.status);
+        } else if (error.request) {
+          console.log(error.request);
+        } else {
+          console.log("Error", error.message);
+        }
       });
   }
   const setToLocalStorage = (id, name, email) => {
