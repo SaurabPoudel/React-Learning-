@@ -1,0 +1,49 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    },
+    {
+      "title": "Velit qui dolores si",
+      "body": "Eum autem iure omnis",
+      "id": 2
+    },
+    {
+      "title": "Et nisi voluptatem ",
+      "body": "Dolores ipsa do sed",
+      "id": 3
+    },
+    {
+      "title": "Repellendus Illum ",
+      "body": "Elit aut sint ea an",
+      "id": 4
+    },
+    {
+      "title": "Ut voluptate et qui ",
+      "body": "Qui fugiat error si",
+      "id": 5
+    },
+    {
+      "title": "Veniam inventore mo",
+      "body": "Nihil tenetur non si",
+      "id": 6
+    },
+    {
+      "title": "Quia maiores aut qui",
+      "body": "Provident magnam ma",
+      "id": 7
+    },
+    {
+      "title": "Aut ut ipsum ducimu",
+      "body": "Iusto nostrud deseru",
+      "id": 8
+    },
+    {
+      "title": "Deleniti quisquam ha",
+      "body": "Tenetur commodo corr",
+      "id": 9
+    }
+  ]
+}
