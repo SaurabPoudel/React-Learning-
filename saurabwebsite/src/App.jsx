@@ -1,12 +1,12 @@
 import About from "./About";
 import Contact from "./Contact";
 import Home from "./Home";
-import Services from "./Services";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { GlobalStyle } from "./GlobalStyle";
+import Portfolio from "./Portfolio";
 
 const App = () => {
   const theme = {
@@ -38,7 +38,7 @@ const App = () => {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
-            <Route path="/service" element={<Services />} />
+            <Route path="/portfolio" element={<Portfolio />} />
             <Route path="/contact" element={<Contact />} />
           </Routes>
           <Footer />

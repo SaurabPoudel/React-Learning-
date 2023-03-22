@@ -1,12 +1,14 @@
-import React from "react";
+import React, { useEffect } from "react";
 import HeroSection from "./components/HeroSection";
+import { useGlobalContext } from "./context";
 
 const About = () => {
-  const data = {
-    name: "Saurab Poudel",
-    image: "./images/about1.svg",
-  };
-  return <HeroSection {...data} />;
+  const { updateAboutPage } = useGlobalContext();
+  useEffect(() => {
+    updateAboutPage();
+  }, []);
+
+  return <HeroSection />;
 };
 
 export default About;
